@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     "receptionist",
     "user",
 
+    "drf_yasg"
 ]
 
 MIDDLEWARE = [
