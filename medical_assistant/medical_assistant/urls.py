@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from medical_assistant.yasg import urlpatterns as doc_urls
+
 urlpatterns = [
     path("admin/", admin.site.urls),
-]
+] + doc_urls
