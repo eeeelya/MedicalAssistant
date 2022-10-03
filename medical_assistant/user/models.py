@@ -11,7 +11,11 @@ class User(AbstractUser):
         ADMIN = 4
 
     type = models.IntegerField(choices=UserType.choices, default=UserType.UNKNOWN)
-    # email_confirmed = models.BooleanField(default=False)
+    email_confirmed = models.BooleanField(default=False)
+    email = models.EmailField(unique=True, blank=True)
+
+    USERNAME_FIELD = "email"
+    REQUIRED_FIELDS = ["username"]
 
     class Meta:
         pass
