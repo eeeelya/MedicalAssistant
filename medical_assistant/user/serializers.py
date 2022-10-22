@@ -20,12 +20,14 @@ class UserSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
+            "type",
             "password",
             "confirmation_password",
         )
         extra_kwargs = {
             "first_name": {"required": True},
             "last_name": {"required": True},
+            "type": {"required": True},
         }
 
     def validate(self, attrs):
@@ -40,6 +42,7 @@ class UserSerializer(serializers.ModelSerializer):
             email=validated_data["email"],
             first_name=validated_data["first_name"],
             last_name=validated_data["last_name"],
+            type=validated_data["type"],
         )
 
         user.set_password(validated_data["password"])
@@ -56,9 +59,9 @@ class UserInfoSerializer(serializers.ModelSerializer):
             "email",
             "first_name",
             "last_name",
-            "password",
+            "type",
         )
-        read_only_fields = ('email', 'password')
+        read_only_fields = ('email',)
 
 
 class ActivationSerializer(UidAndTokenSerializer):

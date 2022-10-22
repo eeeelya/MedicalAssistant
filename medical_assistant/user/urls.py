@@ -7,7 +7,7 @@ from user.views import UserInfoViewSet, UserAuthViewSet
 
 router = DefaultRouter()
 router.register("info", UserInfoViewSet, basename="user-info")
-router.register("", UserAuthViewSet, basename="auth")
+router.register("", UserAuthViewSet, basename="user-auth")
 
 urlpatterns = [
     path("user/", include(router.urls)),

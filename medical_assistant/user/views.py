@@ -6,7 +6,7 @@ from rest_framework.response import Response
 
 from user.models import User
 from user.serializers import UserInfoSerializer
-from user.permissions import ListPermissionForAdmin, IsOwner
+from user.permissions import PermissionsForUser
 from core.mixins import DeactivateModelMixin
 
 
@@ -18,7 +18,7 @@ class UserInfoViewSet(
     viewsets.GenericViewSet,
 ):
     serializer_class = UserInfoSerializer
-    permission_classes = (IsAuthenticated, ListPermissionForAdmin, IsOwner)
+    permission_classes = (IsAuthenticated, PermissionsForUser)
 
     def get_queryset(self):
         return User.objects.filter(is_active=True)
