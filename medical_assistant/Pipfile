@@ -11,6 +11,7 @@ drf-yasg = "*"
 djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 djoser = "*"
+django-filter = "*"
 
 [dev-packages]
 
