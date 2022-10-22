@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework",
     "djoser",
+    "django_filters",
 ]
 
 MIDDLEWARE = [
@@ -149,6 +150,9 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.AllowAny",
     ],
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
 }
 
 SIMPLE_JWT = {
@@ -178,12 +182,13 @@ SIMPLE_JWT = {
     "SLIDING_TOKEN_REFRESH_LIFETIME": timedelta(days=1),
 }
 
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ.get("HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("HOST_PASSWORD")
-EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = os.environ.get("HOST_USER")
+# EMAIL_HOST_PASSWORD = os.environ.get("HOST_PASSWORD")
+# EMAIL_PORT = 587
 
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 
 DJOSER = {
     "PASSWORD_RESET_CONFIRM_URL": "api/v1/user/password/reset/confirm/{uid}/{token}",
