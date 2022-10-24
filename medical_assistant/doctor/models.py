@@ -2,6 +2,7 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 from core.abstract_models import SpecialInformation, UserInformation
+from user.models import User
 
 
 class Doctor(UserInformation, SpecialInformation):
@@ -22,6 +23,7 @@ class Doctor(UserInformation, SpecialInformation):
         FIRST = "1", _("First")
         SECOND = "2", _("Second")
 
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     category = models.CharField(max_length=1, choices=Category.choices, default=Category.SECOND)
     department = models.CharField(max_length=4, choices=Department.choices, default=Department.THERAPY)
 
