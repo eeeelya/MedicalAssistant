@@ -8,6 +8,10 @@ django = "*"
 psycopg2-binary = "*"
 django-countries = "*"
 drf-yasg = "*"
+djangorestframework = "*"
+djangorestframework-simplejwt = "*"
+djoser = "*"
+django-filter = "*"
 
 [dev-packages]
 
