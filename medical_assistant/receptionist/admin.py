@@ -1,3 +1,5 @@
 from django.contrib import admin
 
-# Register your models here.
+from receptionist.models import Receptionist
+
+admin.site.register(Receptionist)
