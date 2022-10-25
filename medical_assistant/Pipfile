@@ -12,6 +12,8 @@ djangorestframework = "*"
 djangorestframework-simplejwt = "*"
 djoser = "*"
 django-filter = "*"
+celery = "*"
+redis = "*"
 
 [dev-packages]
 
