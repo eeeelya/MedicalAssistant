@@ -6,6 +6,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
     container_name: server
     volumes:
       - .:/usr/src/app
@@ -15,6 +16,8 @@ services:
       - .env
     depends_on:
       - db
+      - redis
+      - celery-worker
 
   db:
     image: postgres:14-alpine
@@ -28,8 +31,24 @@ services:
       - POSTGRES_USER=${DB_USER}
       - POSTGRES_PASSWORD=${DB_PASSWORD}
     ports:
-      - "5433:5432"
+      - "5434:5432"
 
+  redis:
+    image: redis
+    restart: always
+
+  celery-worker:
+    restart: always
+    build:
+      context: .
+    container_name: celery-worker
+    command: celery -A medical_assistant worker -l info
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - redis
+    env_file:
+      - .env
 
 volumes:
   postgres_data:
