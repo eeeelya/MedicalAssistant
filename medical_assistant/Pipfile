@@ -14,6 +14,9 @@ djoser = "*"
 django-filter = "*"
 celery = "*"
 redis = "*"
+boto3 = "*"
+django-storages = "*"
+pika = "*"
 
 [dev-packages]
 
