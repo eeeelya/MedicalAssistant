@@ -17,6 +17,9 @@ redis = "*"
 boto3 = "*"
 django-storages = "*"
 pika = "*"
+numpy = "*"
+opencv-python = "*"
+pillow = "*"
 
 [dev-packages]
 
