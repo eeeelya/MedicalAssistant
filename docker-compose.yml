@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  web:
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python medical_assistant/manage.py runserver 0.0.0.0:8000
+    container_name: server
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - medical_assistant/.env
+    depends_on:
+      - redis
+      - celery-worker
+
+  redis:
+    image: redis
+    restart: always
+    container_name: redis
+
+  celery-worker:
+    restart: always
+    build:
+      context: .
+    container_name: celery-worker
+    command: celery -A medical_assistant worker -l info
+    volumes:
+      - .:/usr/src/app
+    depends_on:
+      - redis
+    env_file:
+      - medical_assistant/.env
