@@ -1,7 +1,7 @@
 import datetime
 
-from rest_framework.serializers import ModelSerializer
 from rest_framework.generics import get_object_or_404
+from rest_framework.serializers import ModelSerializer
 
 from client.models import Client
 from user.models import User
@@ -19,7 +19,7 @@ class ClientSerializer(ModelSerializer):
             "sex",
             "birthday_date",
         )
-        read_only_fields = ("user", )
+        read_only_fields = ("user",)
         extra_kwargs = {
             "passport": {"required": True},
             "phone_number": {"required": True},

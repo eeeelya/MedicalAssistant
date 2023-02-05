@@ -1,12 +1,12 @@
-from rest_framework import viewsets, mixins, status
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import mixins, status, viewsets
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-from client.serializers import ClientSerializer
+from client.filters import ClientFilter
 from client.models import Client
 from client.permissions import PermissionsForClient
-from client.filters import ClientFilter
+from client.serializers import ClientSerializer
 from client.tasks import create_medcard
 from core.mixins import DeactivateModelMixin
 
@@ -20,7 +20,7 @@ class ClientViewSet(
 ):
     serializer_class = ClientSerializer
     permission_classes = (IsAuthenticated, PermissionsForClient)
-    filter_backends = (DjangoFilterBackend, )
+    filter_backends = (DjangoFilterBackend,)
     filterset_class = ClientFilter
 
     def get_queryset(self):

@@ -11,4 +11,4 @@ class ClientFilter(filters.FilterSet):
 
     class Meta:
         model = Client
-        fields = ('user', )
+        fields = ("user",)

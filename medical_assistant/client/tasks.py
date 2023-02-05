@@ -1,7 +1,7 @@
 from rest_framework.generics import get_object_or_404
 
-from medcard.models import MedicalCard
 from client.models import Client
+from medcard.models import MedicalCard
 from medical_assistant.celery import app
 
 
