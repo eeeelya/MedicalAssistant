@@ -1,5 +1,8 @@
 FROM python:3.10
 
+RUN apt-get update && apt-get -y dist-upgrade
+RUN apt install -y netcat ffmpeg libsm6 libxext6
+
 WORKDIR /usr/src/app/
 
 ENV PYTHONUNBUFFERED=1 \
