@@ -15,4 +15,3 @@ class PermissionsForUser(permissions.BasePermission):
     def has_object_permission(self, request, view, obj):
         # only owner can retrieve his own account
         return obj.id == request.user.id
-

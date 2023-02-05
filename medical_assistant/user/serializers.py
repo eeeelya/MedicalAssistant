@@ -61,7 +61,7 @@ class UserInfoSerializer(serializers.ModelSerializer):
             "last_name",
             "type",
         )
-        read_only_fields = ('email',)
+        read_only_fields = ("email",)
 
 
 class ActivationSerializer(UidAndTokenSerializer):
