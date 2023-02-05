@@ -21,6 +21,7 @@ skip_glob = ["*/migrations/*"]
       | build
       | dist
       | ^migrations/
+      | venv
 
       # The following are specific to Black, you probably don't want those.
       | blib2to3
