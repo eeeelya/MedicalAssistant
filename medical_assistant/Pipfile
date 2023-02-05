@@ -4,24 +4,24 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-django = "*"
-psycopg2-binary = "*"
-django-countries = "*"
-drf-yasg = "*"
-djangorestframework = "*"
-djangorestframework-simplejwt = "*"
-djoser = "*"
-django-filter = "*"
-celery = "*"
-redis = "*"
-boto3 = "*"
-django-storages = "*"
-pika = "*"
-numpy = "*"
-opencv-python = "*"
-pillow = "*"
+django = {version="==4.1.*", index="pypi"}
+psycopg2-binary = {version="==2.9.*", index="pypi"}
+django-countries = {version="==7.4.*", index="pypi"}
+drf-yasg = {version="==1.21.*", index="pypi"}
+djangorestframework = {version="==3.14.*", index="pypi"}
+djangorestframework-simplejwt = {version="==4.8.*", index="pypi"}
+djoser = {version="==2.1.*", index="pypi"}
+django-filter = {version="==22.*", index="pypi"}
+celery = {version="==5.2.*", index="pypi"}
+redis = {version="==4.3.*", index="pypi"}
+boto3 = {version="==1.26.*", index="pypi"}
+django-storages = {version="==1.13.*", index="pypi"}
 
 [dev-packages]
+black = {version="==22.12.*", index="pypi"}
+isort = {version="==5.11.*", index="pypi"}
+pytest = {version="==7.2.*", index="pypi"}
 
 [requires]
 python_version = "3.10"
+python_full_version = "3.10.6"
