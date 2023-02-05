@@ -10,4 +10,4 @@ class ReceptionistFilter(filters.FilterSet):
 
     class Meta:
         model = Receptionist
-        fields = ("user", )
+        fields = ("user",)

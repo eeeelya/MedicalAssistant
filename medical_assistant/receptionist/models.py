@@ -1,7 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 
-from core.abstract_models import UserInformation, SpecialInformation
+from core.abstract_models import SpecialInformation, UserInformation
 from user.models import User
 
 
