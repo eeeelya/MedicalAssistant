@@ -1,7 +1,6 @@
-
 .idea/*
 *.py[cod]
 *$py.class
 .env
 *pycache*
-*migrations*
+venv
