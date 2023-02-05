@@ -1,12 +1,12 @@
-from rest_framework import viewsets, mixins
-from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import mixins, viewsets
+from rest_framework.permissions import IsAuthenticated
 
 from core.mixins import DeactivateModelMixin
-from medcard.serializers import MedCardSerializer, MedCardAppointmentSerializer
+from medcard.filters import MedCardFilter
 from medcard.models import MedicalCard, MedicalCardAppointment
 from medcard.permissions import PermissionsForMedCard, PermissionsForMedCardAppointment
-from medcard.filters import MedCardFilter
+from medcard.serializers import MedCardAppointmentSerializer, MedCardSerializer
 
 
 class MedCardViewSet(
@@ -15,8 +15,8 @@ class MedCardViewSet(
     mixins.UpdateModelMixin,
     viewsets.GenericViewSet,
 ):
-    permission_classes = (PermissionsForMedCard, )
-    filter_backends = (IsAuthenticated, DjangoFilterBackend, )
+    permission_classes = (PermissionsForMedCard,)
+    filter_backends = (IsAuthenticated, DjangoFilterBackend)
     filter_class = MedCardFilter
 
     def get_queryset(self):
@@ -36,15 +36,13 @@ class MedCardAppointmentViewSet(
     mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
     DeactivateModelMixin,
-    viewsets.GenericViewSet
+    viewsets.GenericViewSet,
 ):
     serializer_class = MedCardAppointmentSerializer
-    permission_classes = (IsAuthenticated, PermissionsForMedCardAppointment, )
+    permission_classes = (IsAuthenticated, PermissionsForMedCardAppointment)
 
     def get_queryset(self):
         if self.request.user.type == 1:
             return MedicalCardAppointment.objects.filter(client__user=self.request.user, is_active=True)
 
         return MedicalCardAppointment.objects.filter(is_active=True)
-
-

@@ -34,4 +34,3 @@ class MedCardAppointmentSerializer(serializers.ModelSerializer):
             "therapy",
         )
         read_only_fields = ("client", "doctor")
-
