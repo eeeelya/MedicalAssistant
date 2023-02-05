@@ -1,13 +1,18 @@
-FROM python:3.10-slim
+FROM python:3.10-alpine
 
-RUN apt-get update && apt-get -y dist-upgrade
-RUN apt install -y netcat ffmpeg libsm6 libxext6
+RUN apk update && apk add python3-dev \
+                          gcc \
+                          libc-dev \
+                          libffi-dev
 
-COPY medical_assistant app/
-WORKDIR app/
+WORKDIR /app
 
 ENV PYTHONUNBUFFERED=1 \
     PYTHONPATH="."
 
-RUN pip install --upgrade pipenv
+COPY ./medical_assistant /app
+
+RUN python -m pip install --upgrade pip pipenv
 RUN pipenv install --system --deploy
+
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
