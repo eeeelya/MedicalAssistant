@@ -18,7 +18,7 @@ class AppointmentSerializer(serializers.ModelSerializer):
             "visiting_datetime",
             "approved",
         )
-        read_only_fields = ("approved", )
+        read_only_fields = ("approved",)
         extra_kwargs = {
             "client": {"required": True},
             "doctor": {"required": True},

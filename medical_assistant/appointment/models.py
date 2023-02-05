@@ -3,8 +3,8 @@ import datetime
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from core.abstract_models import SpecialInformation
 from client.models import Client
+from core.abstract_models import SpecialInformation
 from doctor.models import Doctor
 
 
