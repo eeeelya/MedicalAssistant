@@ -10,4 +10,4 @@ class DoctorFilter(filters.FilterSet):
 
     class Meta:
         model = Doctor
-        fields = ("user", )
+        fields = ("user",)
